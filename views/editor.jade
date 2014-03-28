@@ -28,21 +28,22 @@ html#ng-app(xmlns:ng='http://angularjs.org', lang='cs', dir='ltr', ng-controller
         window.loader.style.cssText = 'position:absolute;width:100%;height:100%;opacity:1;z-index:1000;background:#000;';
         document.body.appendChild(window.loader);
     //[if lt IE 8]><!
-      script(src="/vendor/json2/json2.js")
+      <script src="/vendor/json2/json2.js"></script>
 
     //<![endif]
-      style(type='text/css' href='assets/css/main.css' rel="stylesheet")
-    script(type='text/javascript' src='vendor/angular-loader/angular-loader.js')
-    script(type='text/javascript' src='vendor/scriptjs/dist/script.js')
+    <style type='text/css' href='css/main.css' rel="stylesheet"></style>
+    script(type='text/javascript' src='angular-loader/angular-loader.js')
+    script(type='text/javascript' src='scriptjs/dist/script.js')
     script
         |$script([
-        |'vendor/ace-builds/src-min/ace.js',
-        |'assets/js/editor.js'],function(){angular.bootstrap(document, ['editor']).ready(function(){window.loader.parentNode.removeChild(window.loader)})})
+        |'ace-builds/src-min/ace.js',
+        |'js/editor.js'],function(){angular.bootstrap(document, ['editor'])
+        |window.loader.parentNode.removeChild(window.loader)});
     
     //[if lte IE 9]><!
       .browser-alert-wraper
         .content
-          | Je nám líto, ale tvůj prohlížeč je patrně zastaralý a s naší aplikací si nerozumí. Prosím nainstaluj si jeden z následujících.
+          |Je nám líto, ale tvůj prohlížeč je patrně zastaralý a s naší aplikací si nerozumí. Prosím nainstaluj si jeden z následujících.
         .dim
     //<![endif]
     spinner(ng-cloak)

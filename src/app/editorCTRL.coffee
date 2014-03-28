@@ -1,5 +1,7 @@
-module = angular.module("app.appctrl", [])
-module.controller "AppCtrl", ["$scope","$state","$rootScope",($scope,$state,$rootScope) ->
+
+module = angular.module("editor.ctrl", [])
+
+module.controller "EditorCtrl", ["$scope","$state","$rootScope",($scope,$state,$rootScope) ->
   $scope.init =->
 #    API.csrf()
 

@@ -24,7 +24,6 @@ require "./../editor/directive"
 require "./../i18n/cz"
 
 module = angular.module("editor", [
-  "editor.ctrl"
   "ui.router"
   "ngAnimate"
   "ngTouch"
@@ -38,6 +37,7 @@ module = angular.module("editor", [
   "i18n"
   "FlashService"
   "SpinnerService"
+  "editor.ctrl"
 ])
 module.config ["$stateProvider", "$urlRouterProvider","$locationProvider","$logProvider","$provide","$httpProvider",($stateProvider, $urlRouterProvider,$locationProvider,$logProvider,$provide,$httpProvider) ->
   $urlRouterProvider.otherwise "/"
