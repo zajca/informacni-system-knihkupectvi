@@ -1,0 +1,13 @@
+{
+  "host": "localhost",
+  "url": {
+    "www": "http://localhost"
+  },
+  "port": 8080,
+  "oauth": {
+    "github": {
+      "id": "series_of_random_chars",
+      "secret": "longer_series_of_random_chars"
+    }
+  }
+}

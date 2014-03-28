@@ -3,17 +3,16 @@ html#ng-app(xmlns:ng='http://angularjs.org', lang='cs', dir='ltr', ng-controller
   head
       title
       style(type='text/css')
-        [ng-cloak] {display: none;}
+        |[ng-cloak]{display: none;}
       script(type='text/javascript').
-        document.write('<base href="' + document.location + '" />')
-        window.loader = document.createElement('div')
-        window.loader.style.cssText = 'position:absolute;width:100%;height:100%;opacity:1;z-index:1000;background:#000;';
-        document.body.appendChild(window.loader)
+        document.write('<base href="' + document.location + '" />');
       meta(name='viewport', content='user-scalable=1.0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0')
       meta(charset='UTF-8')
-      // if lt IE 9
-        script(src="http://html5shim.googlecode.com/svn/trunk/html5.js")
-      // if lte IE 8
+      //[if lt IE 9]><!
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      //<![endif]
+
+      //[if lte IE 8]><!
         script
           document.createElement('ng-include');
           document.createElement('ng-pluralize');
@@ -21,36 +20,31 @@ html#ng-app(xmlns:ng='http://angularjs.org', lang='cs', dir='ltr', ng-controller
           document.createElement('ng:include');
           document.createElement('ng:pluralize');
           document.createElement('ng:view');
-      // if lt IE 8
-        script(src="/vendor/json2/json2.js")
-
-      script(type='text/javascript' src='vendor/angular-loader/angular-loader.js')
-      script(type='text/javascript' src='vendor/scriptjs/dist/script.js')
-      script(type='text/javascript')
-        $script([
-          'vendor/ace-builds/src-min/ace.js'
-          ], function() {
-            angular.bootstrap(document, ['editor']).ready(function(){
-              window.loader.parentNode.removeChild(window.loader)
-            });
-          });
-
-      //INJECT:css (js)
-      //END INJECT
-
-      //INJECT:js (js)
-      //END INJECT
-      script
-        <!--
-        !{state.toString().replace(/<\//g,"<\\/").replace(/-->/g, "--\\>")}
-        -->
-
+      //<![endif]
+     
   body
-    //if lt IE 9
+    script(type='text/javascript').
+        window.loader = document.createElement('div');
+        window.loader.style.cssText = 'position:absolute;width:100%;height:100%;opacity:1;z-index:1000;background:#000;';
+        document.body.appendChild(window.loader);
+    //[if lt IE 8]><!
+      script(src="/vendor/json2/json2.js")
+
+    //<![endif]
+      style(type='text/css' href='assets/css/main.css' rel="stylesheet")
+    script(type='text/javascript' src='vendor/angular-loader/angular-loader.js')
+    script(type='text/javascript' src='vendor/scriptjs/dist/script.js')
+    script
+        |$script([
+        |'vendor/ace-builds/src-min/ace.js',
+        |'assets/js/editor.js'],function(){angular.bootstrap(document, ['editor']).ready(function(){window.loader.parentNode.removeChild(window.loader)})})
+    
+    //[if lte IE 9]><!
       .browser-alert-wraper
         .content
           | Je nám líto, ale tvůj prohlížeč je patrně zastaralý a s naší aplikací si nerozumí. Prosím nainstaluj si jeden z následujících.
         .dim
+    //<![endif]
     spinner(ng-cloak)
     .container(ng-cloak)
       .topMenu

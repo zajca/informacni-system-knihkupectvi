@@ -11,5 +11,5 @@ nconf.use("memory")
   })
 
 unless host = nconf.get("host")
-  console.error "The 'host' option is required for Plunker to run."
+  console.error "The 'host' option is required to run."
   process.exit(1)

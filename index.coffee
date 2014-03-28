@@ -1,9 +1,7 @@
 coffee = require("coffee-script")
-less = require("less")
 jade = require("jade")
 express = require("express")
 expstate = require("express-state")
-assets = require("connect-assets")
 nconf = require("nconf")
 authom = require("authom")
 request = require("request")
@@ -11,6 +9,7 @@ path = require("path")
 xmlbuilder = require("xmlbuilder")
 es = require("event-stream")
 hbs = require("hbs")
+lactate = require("lactate")
 JSONStream = require("JSONStream")
 
 pkginfo = require("./package.json")
@@ -19,6 +18,8 @@ pkginfo = require("./package.json")
 # Set defaults in nconf
 require "./configure"
 
+lactateOptions = 
+  "max age": "one week"
 
 app = module.exports = express()
 
@@ -32,6 +33,8 @@ app.engine "html", hbs.__express
 app.use require("prerender-node")
 app.use require("./middleware/redirect").middleware(nconf.get("redirect"))
 app.use require("./middleware/vary").middleware()
+# app.use lactate.static "#{__dirname}/vendor/angular-loader/angular-loader.js", lactateOptions
+# app.use lactate.static "#{__dirname}/vendor/scriptjs/dist/script.js", lactateOptions
 app.use lactate.static "#{__dirname}/vendor", lactateOptions
 app.use lactate.static "#{__dirname}/assets", lactateOptions
 
@@ -164,16 +167,16 @@ secureFilters = require("secure-filters")
 
 hbs.registerHelper "jsObj", (obj) -> new hbs.SafeString(secureFilters.jsObj(obj))
 
-app.get "/plunks", addSession, (req, res) -> res.render "landing"
-app.get "/plunks/trending", addSession, (req, res) -> res.render "landing"
-app.get "/plunks/popular", addSession, (req, res) -> res.render "landing"
-app.get "/plunks/recent", addSession, (req, res) -> res.render "landing"
-app.get "/plunks/views", addSession, (req, res) -> res.render "landing"
-app.get "/users", addSession, (req, res) -> res.render "landing"
-app.get "/users/:username", addSession, (req, res) -> res.render "landing"
-app.get "/group", addSession, (req, res) -> res.render "landing"
-app.get "/tags", addSession, (req, res) -> res.render "landing"
-app.get "/tags/:tagname", addSession, (req, res) -> res.render "landing"
+app.get "/plunks", addSession, (req, res) -> res.render "editor"
+app.get "/plunks/trending", addSession, (req, res) -> res.render "editor"
+app.get "/plunks/popular", addSession, (req, res) -> res.render "editor"
+app.get "/plunks/recent", addSession, (req, res) -> res.render "editor"
+app.get "/plunks/views", addSession, (req, res) -> res.render "editor"
+app.get "/users", addSession, (req, res) -> res.render "editor"
+app.get "/users/:username", addSession, (req, res) -> res.render "editor"
+app.get "/group", addSession, (req, res) -> res.render "editor"
+app.get "/tags", addSession, (req, res) -> res.render "editor"
+app.get "/tags/:tagname", addSession, (req, res) -> res.render "editor"
 app.get "/:id", addSession, (req, res) ->
   request.get "#{apiUrl}/plunks/#{req.params.id}", (err, response, body) ->
     return res.send(500) if err
@@ -182,12 +185,12 @@ app.get "/:id", addSession, (req, res) ->
     try
       plunk = JSON.parse(body)
     catch e
-      return res.render "landing"
+      return res.render "editor"
     
     res.locals.bootstrap =
       plunks: [plunk]
       page_title: plunk.description
-    res.render "landing"
+    res.render "editor"
 
 app.get "/*", addSession, (req, res) ->
-  res.render "landing"
+  res.render "editor"
