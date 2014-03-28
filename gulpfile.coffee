@@ -250,9 +250,8 @@ gulp.task 'COFFEE-EDITOR', ["COFFEELINT"] ,->
       extensions: ['.coffee'],
       noParse: modules
     }))
-  .pipe(gulpif(prod,rename('editor.js',suffix: ".min")))
-  .pipe(gulpif(!prod,rename('editor.js')))
-  .pipe(gulpif(prod, rev()))
+  .pipe(rename('editor.js'))
+  # .pipe(gulpif(prod, rev()))
   .pipe(gulpif(prod,uglify mangle:false))
   .pipe(gulp.dest(config.jsDest))
   .pipe(gulpif(!prod,livereload(server)))
