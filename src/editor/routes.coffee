@@ -4,6 +4,7 @@ module = angular.module("editor.editor", ["editor.editor.ctrl"])
 
 module.config(
   ["$stateProvider",($stateProvider) ->
+    console.log "config"
 #    $stateProvider.state("index",
 #      url: "/directory"
 #      abstract: true
@@ -12,7 +13,7 @@ module.config(
 #          templateUrl: "directory/directory.tpl.html"
 
     $stateProvider.state("editor",
-      url: "/"
+      url: "/editor"
       controller: "EditorEditorCtrl"
       views:
         main:

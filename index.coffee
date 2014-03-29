@@ -19,7 +19,7 @@ pkginfo = require("./package.json")
 require "./configure"
 
 lactateOptions = 
-  "max age": "one week"
+  "max age": "one second"
 
 app = module.exports = express()
 

@@ -40,7 +40,7 @@ module = angular.module("editor", [
   "editor.ctrl"
 ])
 module.config ["$stateProvider", "$urlRouterProvider","$locationProvider","$logProvider","$provide","$httpProvider",($stateProvider, $urlRouterProvider,$locationProvider,$logProvider,$provide,$httpProvider) ->
-  $urlRouterProvider.otherwise "/"
+  $urlRouterProvider.otherwise "/editor"
   $locationProvider.html5Mode(false).hashPrefix('!')
   $logProvider.debugEnabled true
   $httpProvider.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest"

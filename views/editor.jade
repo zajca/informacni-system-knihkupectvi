@@ -25,14 +25,14 @@ html#ng-app(xmlns:ng='http://angularjs.org', lang='cs', dir='ltr', ng-controller
   body
     script(type='text/javascript').
         window.loader = document.createElement('div');
-        window.loader.style.cssText = 'position:absolute;width:100%;height:100%;opacity:1;z-index:1000;background:#000;';
+        window.loader.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;opacity:1;z-index:1000;background:#000;';
         document.body.appendChild(window.loader);
     //[if lt IE 8]><!
       <script src="/vendor/json2/json2.js"></script>
 
     //<![endif]
     <style type='text/css' href='css/main.css' rel="stylesheet"></style>
-    script(type='text/javascript' src='angular-loader/angular-loader.js')
+    //script(type='text/javascript' src='angular-loader/angular-loader.js')
     script(type='text/javascript' src='scriptjs/dist/script.js')
     script
         |$script([
@@ -43,14 +43,13 @@ html#ng-app(xmlns:ng='http://angularjs.org', lang='cs', dir='ltr', ng-controller
     //[if lte IE 9]><!
       .browser-alert-wraper
         .content
-          |Je nám líto, ale tvůj prohlížeč je patrně zastaralý a s naší aplikací si nerozumí. Prosím nainstaluj si jeden z následujících.
+          |Your browser is too old for this app
         .dim
     //<![endif]
     spinner(ng-cloak)
-    .container(ng-cloak)
-      .topMenu
-      .content
-        #menu
-          ul
-            li(ng-repeat='m in menu', ui-sref='{{m.state}}', ng-class='{active: m.active}') {{m.name}}
-        .anim(ui-view='main')
+    .topMenu(ng-cloak)
+    .content(ng-cloak)
+      #menu
+        ul
+          li(ng-repeat='m in menu') {{m.name}}
+      .anim(ui-view='main')
