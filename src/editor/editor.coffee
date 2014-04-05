@@ -1,8 +1,9 @@
 require "./../common/titleService"
 require "./../../vendor/angular-ui-ace/ui-ace"
 require "./../../vendor/ng-pdfviewer/ng-pdfviewer"
+require "./../../vendor/angular-tree-control/angular-tree-control"
 
-module = angular.module("editor.editor.ctrl", ["titleService","ui.ace","ngPDFViewer"])
+module = angular.module("editor.editor.ctrl", ["titleService","ui.ace","ngPDFViewer","treeControl"])
 module.controller "EditorEditorCtrl",
   [
     "$scope"
