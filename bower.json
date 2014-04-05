@@ -21,7 +21,8 @@
     "scriptjs": "~2.5.2",
     "angular-loader": "~1.2.15",
     "ng-pdfviewer": "~0.2.1",
-    "angular-tree-control": "~0.1.4"
+    "angular-tree-control": "~0.1.4",
+    "angular-ui-layout": "bower"
   },
   "resolutions": {
     "angular": "=1.2.15"

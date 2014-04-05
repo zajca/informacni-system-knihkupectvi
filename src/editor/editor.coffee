@@ -1,9 +1,10 @@
 require "./../common/titleService"
 require "./../../vendor/angular-ui-ace/ui-ace"
 require "./../../vendor/ng-pdfviewer/ng-pdfviewer"
+require "./../../vendor/angular-ui-layout/ui-layout"
 require "./../../vendor/angular-tree-control/angular-tree-control"
 
-module = angular.module("editor.editor.ctrl", ["titleService","ui.ace","ngPDFViewer","treeControl"])
+module = angular.module("editor.editor.ctrl", ["titleService","ui.ace","ngPDFViewer","treeControl","ui.layout"])
 module.controller "EditorEditorCtrl",
   [
     "$scope"
@@ -17,11 +18,12 @@ module.controller "EditorEditorCtrl",
     titleService.setTitle "EDITOR"
 
     $scope.init = ->
-      $scope.pdfUrl = '/pdfjs/examples/helloworld/helloworld.pdf'
+
+#      $scope.pdfUrl = '/pdfjs/examples/helloworld/helloworld.pdf'
+      $scope.pdfUrl = '/ng-pdfviewer/demo/test.pdf'
       $scope.viewer = pdf.Instance("viewer")
 
     $scope.pageLoaded = (curPage, totalPages) ->
-      console.log curPage, totalPages
       $scope.currentPage = curPage
       $scope.totalPages = totalPages
       return
