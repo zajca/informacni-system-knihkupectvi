@@ -1,61 +1,66 @@
 doctype html
 html#ng-app(xmlns:ng='http://angularjs.org', lang='cs', dir='ltr', ng-controller='EditorCtrl', ng-init='init()')
-  head
-      title
-      style(type='text/css')
-        [ng-cloak] {display: none;}
-      script(type='text/javascript').
-        document.write('<base href="' + document.location + '" />')
-        window.loader = document.createElement('div')
-        window.loader.style.cssText = 'position:absolute;width:100%;height:100%;opacity:1;z-index:1000;background:#000;';
-        document.body.appendChild(window.loader)
-      meta(name='viewport', content='user-scalable=1.0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0')
-      meta(charset='UTF-8')
-      // if lt IE 9
+    head
+        title
+        style(type='text/css').
+          [ng-cloak] {display: none;}
+        script(type='text/javascript').
+          document.write('<base href="' + document.location + '" />');
+        meta(name='viewport', content='user-scalable=1.0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0')
+        meta(charset='UTF-8')
+
+        <!--[if lt IE 9]>
         script(src="http://html5shim.googlecode.com/svn/trunk/html5.js")
-      // if lte IE 8
-        script
+        <![endif]-->
+
+        <!--[if lte IE 8]>
+        script(type='text/javascript').
           document.createElement('ng-include');
           document.createElement('ng-pluralize');
           document.createElement('ng-view');
           document.createElement('ng:include');
           document.createElement('ng:pluralize');
           document.createElement('ng:view');
-      // if lt IE 8
+        <![endif]-->
+    body
+        script(type='text/javascript').
+            window.loader = document.createElement('div');
+            window.loader.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;opacity:1;z-index:1000;background:#000;';
+            document.body.appendChild(window.loader);
+        <!--[if lte IE 9]>
+        .browser-alert-wraper
+          .content
+            |Your browser is too old for this app
+          .dim
+        <![endif]-->
+
+        spinner(ng-cloak)
+        .topMenu(ng-cloak)
+        .content(ng-cloak)
+          .navbar.navbar-default(role='navigation', bs-navbar='bs-navbar')
+            .navbar-header
+              a.navbar-brand(href='#') Brand
+              ul.nav.navbar-nav
+                li(ng-repeat='m in menu')
+                  a {{m.name}}
+          .anim(ui-view='main')
+
+        <!--[if lt IE 8]>
         script(src="/vendor/json2/json2.js")
+        <![endif]-->
 
-      script(type='text/javascript' src='vendor/angular-loader/angular-loader.js')
-      script(type='text/javascript' src='vendor/scriptjs/dist/script.js')
-      script(type='text/javascript')
-        $script([
-          'vendor/ace-builds/src-min/ace.js'
-          ], function() {
-            angular.bootstrap(document, ['editor']).ready(function(){
-              window.loader.parentNode.removeChild(window.loader)
-            });
-          });
-
-      //INJECT:css (js)
-      //END INJECT
-
-      //INJECT:js (js)
-      //END INJECT
-      script
-        <!--
-        !{state.toString().replace(/<\//g,"<\\/").replace(/-->/g, "--\\>")}
-        -->
-
-  body
-    //if lt IE 9
-      .browser-alert-wraper
-        .content
-          | Je nám líto, ale tvůj prohlížeč je patrně zastaralý a s naší aplikací si nerozumí. Prosím nainstaluj si jeden z následujících.
-        .dim
-    spinner(ng-cloak)
-    .container(ng-cloak)
-      .topMenu
-      .content
-        #menu
-          ul
-            li(ng-repeat='m in menu', ui-sref='{{m.state}}', ng-class='{active: m.active}') {{m.name}}
-        .anim(ui-view='main')
+        link(type='text/css' href='css/main.css' rel='stylesheet')
+        //script(type='text/javascript' src='angular-loader/angular-loader.js')
+        script(type='text/javascript' src='scriptjs/dist/script.js')
+        script(type='text/javascript').
+            $script([
+                'ng-pdfviewer/lib/compatibility.js',
+                'ng-pdfviewer/lib/pdf.worker.js',
+                'ng-pdfviewer/lib/pdf.js',
+                'ace-builds/src-min/ace.js',
+                'js/editor.js'
+                ],
+                function(){
+                    angular.bootstrap(document, ['editor'])
+                    window.loader.parentNode.removeChild(window.loader)
+                });

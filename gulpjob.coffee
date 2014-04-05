@@ -1,11 +1,3 @@
-###
-
-
-CONFIG
-
-
-###
-
 gulp = require('gulp')
 gutil = require('gulp-util')
 autoprefixer = require("gulp-autoprefixer")
@@ -309,6 +301,7 @@ IMG SPRITES
 ###
 gulp.task('SPRITES', ->
   gulp.src(["#{dirs.src}/images/**/*.png","!#{dirs.src}/images/**/*_ns.png"])
+  .pipe(plumber())
   .pipe(sprite(
       name: 'sprite.png'
       style: 'sprites.less',
@@ -330,6 +323,7 @@ JPG Images
 ###
 gulp.task('IMG', ->
   gulp.src(["#{dirs.src}/images/**/*.jpg","#{dirs.src}/images/**/*_ns.png"])
+  .pipe(plumber())
 #  .pipe(gulpif(prod,imagemin {
 #      optimizationLevel: 5
 #      progressive: true
@@ -349,6 +343,7 @@ COPY OTHER IMAGES
 ###
 gulp.task('IMG_OTHER', ->
   gulp.src("#{dirs.src}/images/**/#{config.images}")
+  .pipe(plumber())
   .pipe(gulp.dest("#{dirs.dest}/images"))
   .pipe(gulpif(!prod,livereload(server)))
 )
@@ -363,6 +358,7 @@ JADE
 ###
 gulp.task('JADE', ->
   gulp.src("#{dirs.src}/**/*.jade")
+  .pipe(plumber())
   .pipe(gulpif(prod,jade(
     pretty:false
     )))

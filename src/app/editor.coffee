@@ -3,7 +3,7 @@ require "./../../vendor/angular/angular.js"
 require "./../../vendor/angular-ui-router/release/angular-ui-router"
 require "./../../vendor/angular-animate/angular-animate"
 require "./../../vendor/angular-touch/angular-touch"
-require "./../../vendor/angular-easyfb/angular-easyfb"
+#require "./../../vendor/angular-easyfb/angular-easyfb"
 require "./../../vendor/angular-translate/angular-translate"
 require "./../../libs/cs_cz"
 #COMMON
@@ -24,7 +24,6 @@ require "./../editor/directive"
 require "./../i18n/cz"
 
 module = angular.module("editor", [
-  "editor.ctrl"
   "ui.router"
   "ngAnimate"
   "ngTouch"
@@ -38,10 +37,12 @@ module = angular.module("editor", [
   "i18n"
   "FlashService"
   "SpinnerService"
+  "editor.ctrl"
+  "editor.editor"
 ])
 module.config ["$stateProvider", "$urlRouterProvider","$locationProvider","$logProvider","$provide","$httpProvider",($stateProvider, $urlRouterProvider,$locationProvider,$logProvider,$provide,$httpProvider) ->
-  $urlRouterProvider.otherwise "/"
-  $locationProvider.html5Mode(false).hashPrefix('!')
+  $urlRouterProvider.otherwise "/editor"
+  $locationProvider.html5Mode(true).hashPrefix('!')
   $logProvider.debugEnabled true
   $httpProvider.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest"
 

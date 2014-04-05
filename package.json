@@ -2,6 +2,9 @@
   "name": "informacni-system",
   "version": "0.0.1",
   "dependencies": {
+    "express": "3.5.1",
+    "jade": "*",
+    "coffee-script": "^1.7.1"
   },
   "devDependencies": {
     "libnotify": "~1.0.4",

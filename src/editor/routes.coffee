@@ -12,11 +12,11 @@ module.config(
 #          templateUrl: "directory/directory.tpl.html"
 
     $stateProvider.state("editor",
-      url: "/"
-      controller: "EditorEditorCtrl"
+      url: "/editor"
       views:
         main:
-          templateUrl: "editor/editor.html"
+          controller: "EditorEditorCtrl"
+          templateUrl: "partials/editor/editor.html"
     )
   ]
 )
