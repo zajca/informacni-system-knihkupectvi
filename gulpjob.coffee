@@ -26,6 +26,7 @@ plumber = require('gulp-plumber')
 libnotify = require('libnotify')
 browserify = require('gulp-browserify')
 jade = require('gulp-jade')
+filesize = require('gulp-filesize')
 
 modules=[
   "vendor/angular/angular.js",
@@ -181,10 +182,12 @@ gulp.task 'LESS', ->
       "ios 6",
       "android 4"
     ))
+  .pipe(gulpif(prod,filesize()))
   .pipe(gulpif(prod,minifycss()))
   .pipe(gulpif(prod, rename suffix: ".min"))
   # .pipe(gulpif(prod, rev()))
   .pipe(gulp.dest(config.css.dest))
+  .pipe(filesize())
   .pipe(gulpif(!prod,livereload(server)))
 
 ###
@@ -242,11 +245,13 @@ gulp.task 'COFFEE-EDITOR', ["COFFEELINT"] ,->
       extensions: ['.coffee'],
       noParse: modules
     }))
+  .pipe(gulpif(prod,filesize()))
   .pipe(gulpif(prod,rename('editor.js',suffix: ".min")))
   .pipe(gulpif(!prod,rename('editor.js')))
   .pipe(gulpif(prod, rev()))
   .pipe(gulpif(prod,uglify mangle:false))
   .pipe(gulp.dest(config.jsDest))
+  .pipe(filesize())
   .pipe(gulpif(!prod,livereload(server)))
 # gulp.task 'COFFEE-FINANCE', ["COFFEELINT"] ,->
 #   gulp.src(config.finance.cs.src, { read: false })
@@ -364,7 +369,7 @@ gulp.task('JADE', ->
     )))
   .pipe(gulpif(!prod,jade(
     pretty:true
-    debug:true
+    debug:false
     )))
   # .pipe(gulpif(prod,minifyHtml {
   #     empty: true
