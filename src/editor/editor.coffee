@@ -1,10 +1,10 @@
 require "./../common/titleService"
 require "./../../vendor/angular-ui-ace/ui-ace"
 require "./../../vendor/ng-pdfviewer/ng-pdfviewer"
-require "./../../vendor/angular-ui-layout/ui-layout"
+# require "./../../vendor/angular-ui-layout/ui-layout"
 require "./../../vendor/angular-tree-control/angular-tree-control"
 
-m = angular.module("editor.editor.ctrl", ["titleService","ui.ace","ngPDFViewer","treeControl","ui.layout"])
+m = angular.module("editor.editor.ctrl", ["titleService","ui.ace","ngPDFViewer","treeControl"])
 m.controller "EditorEditorCtrl",
   [
     "$scope"
@@ -81,5 +81,5 @@ m.controller "EditorEditorCtrl",
         children: []
       return
   ]
-  
+
 module.exports = m  
