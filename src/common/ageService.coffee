@@ -1,5 +1,5 @@
-angular.module( 'AgeService', [])
-.factory("AgeService", ->
+m = angular.module( 'AgeService', [])
+m.factory("AgeService", ->
   age = undefined
   observerCallbacks = []
 
@@ -22,3 +22,4 @@ angular.module( 'AgeService', [])
     this.age = undefined
     this.notifyObservers()
 )
+module.exports = m

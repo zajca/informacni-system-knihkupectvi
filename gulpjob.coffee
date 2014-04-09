@@ -241,7 +241,7 @@ gulp.task 'COFFEE-EDITOR', ["COFFEELINT"] ,->
   .pipe(plumber())
   .pipe(browserify({
       debug: true
-      transform: ['caching-coffeeify', 'brfs']
+      transform: ['caching-coffeeify', 'brfs','envify']
       extensions: ['.coffee'],
       noParse: modules
     }))

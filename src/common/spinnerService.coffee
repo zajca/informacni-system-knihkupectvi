@@ -1,5 +1,5 @@
-module = angular.module( 'SpinnerService', [])
-module.factory("SpinnerService",["$rootScope",($rootScope) ->
+m = angular.module( 'SpinnerService', [])
+m.factory("SpinnerService",["$rootScope",($rootScope) ->
   set:->
     r = sessionStorage.getItem "request"
     if r?
@@ -14,7 +14,7 @@ module.factory("SpinnerService",["$rootScope",($rootScope) ->
       sessionStorage.setItem "request", 0
       $rootScope.$broadcast("LOADING_END")
 ])
-module.directive("spinner",->
+m.directive("spinner",->
   restrict: "E"
   replace:true
   scope:{}
@@ -34,3 +34,4 @@ module.directive("spinner",->
   <div class="bounce3"></div>
   </div></div></div>'
 )
+module.exports = m

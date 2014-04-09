@@ -1,5 +1,5 @@
-module = angular.module( 'SessionService', [])
-module.factory("SessionService", ->
+m = angular.module( 'SessionService', [])
+m.factory("SessionService", ->
   get: (key) ->
     sessionStorage.getItem key
 
@@ -9,3 +9,4 @@ module.factory("SessionService", ->
   unset: (key) ->
     sessionStorage.removeItem key
 )
+module.exports = m

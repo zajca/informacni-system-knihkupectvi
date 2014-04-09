@@ -1,5 +1,5 @@
-module = angular.module("editor.editor.directive", [])
-module.directive "editor",
+m = angular.module("editor.editor.directive", [])
+m.directive "editor",
 [
   "$timeout"
 (
@@ -14,3 +14,4 @@ module.directive "editor",
   controller:($scope)->
 
 ]
+module.exports = m

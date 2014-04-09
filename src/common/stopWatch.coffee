@@ -1,6 +1,6 @@
 # update Model
-module = angular.module("stopwatch", [])
-module.directive "stopWatch", ["$timeout",($timeout) ->
+m = angular.module("stopwatch", [])
+m.directive "stopWatch", ["$timeout",($timeout) ->
   restrict: "E"
   transclude: true
   scope:
@@ -52,7 +52,7 @@ module.directive "stopWatch", ["$timeout",($timeout) ->
   "</div>"
   replace: true
 ]
-module.filter "numberpad", ->
+m.filter "numberpad", ->
   (input, places) ->
     out = ""
     if places
@@ -65,3 +65,5 @@ module.filter "numberpad", ->
         i++
       out = out + input
     out
+    
+module.exports = m

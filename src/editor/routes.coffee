@@ -1,8 +1,8 @@
 require "./editor"
 
-module = angular.module("editor.editor", ["editor.editor.ctrl"])
+m = angular.module("editor.editor", ["editor.editor.ctrl"])
 
-module.config(
+m.config(
   ["$stateProvider",($stateProvider) ->
 #    $stateProvider.state("index",
 #      url: "/directory"
@@ -20,3 +20,4 @@ module.config(
     )
   ]
 )
+module.exports = m

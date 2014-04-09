@@ -1,6 +1,6 @@
-module = angular.module( 'device', [])
+m = angular.module( 'device', [])
 
-module.factory("device", ["$window",($window) ->
+m.factory("device", ["$window",($window) ->
   keyframeprefix=""
   animationstring="animation"
   animation = false
@@ -52,3 +52,4 @@ module.factory("device", ["$window",($window) ->
           break
         i++
 ])
+module.exports = m

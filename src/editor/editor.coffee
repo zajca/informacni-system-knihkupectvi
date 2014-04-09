@@ -4,8 +4,8 @@ require "./../../vendor/ng-pdfviewer/ng-pdfviewer"
 require "./../../vendor/angular-ui-layout/ui-layout"
 require "./../../vendor/angular-tree-control/angular-tree-control"
 
-module = angular.module("editor.editor.ctrl", ["titleService","ui.ace","ngPDFViewer","treeControl","ui.layout"])
-module.controller "EditorEditorCtrl",
+m = angular.module("editor.editor.ctrl", ["titleService","ui.ace","ngPDFViewer","treeControl","ui.layout"])
+m.controller "EditorEditorCtrl",
   [
     "$scope"
     "titleService"
@@ -81,3 +81,5 @@ module.controller "EditorEditorCtrl",
         children: []
       return
   ]
+  
+module.exports = m  

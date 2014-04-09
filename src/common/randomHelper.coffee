@@ -1,5 +1,5 @@
-module= angular.module( 'random', [])
-module.factory "random", ->
+m= angular.module( 'random', [])
+m.factory "random", ->
   randomNumber:->
     Math.floor(Math.random())
   randomNumberBetween:(min,max)->
@@ -34,3 +34,5 @@ module.factory "random", ->
     fraction = String(((if neg then -value else value)) % power)
     padding = new Array(Math.max(precision - fraction.length, 0) + 1).join("0")
     (if precision then integral + "." + padding + fraction else integral)
+
+module.exports = m

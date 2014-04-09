@@ -1,7 +1,7 @@
 "use strict"
-module = angular.module("bindHtmlUnsafe", [])
+m = angular.module("bindHtmlUnsafe", [])
 
-module.directive "bindHtmlUnsafe", ["$compile",($compile) ->
+m.directive "bindHtmlUnsafe", ["$compile",($compile) ->
   ["$scope", "$element", "$attrs",($scope, $element, $attrs) ->
     compile = (newHTML) -> # Create re-useable compile function
       newHTML = $compile(newHTML)($scope) # Compile html
@@ -15,3 +15,4 @@ module.directive "bindHtmlUnsafe", ["$compile",($compile) ->
       compile newHTML # Compile it
   ]
 ]
+module.exports = m

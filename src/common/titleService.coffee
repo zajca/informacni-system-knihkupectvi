@@ -1,6 +1,6 @@
-module = angular.module( 'titleService', [])
+m = angular.module( 'titleService', [])
 
-module.factory('titleService', ["$document",( $document ) ->
+m.factory('titleService', ["$document",( $document ) ->
   suffix = title = ""
 
   {
@@ -22,3 +22,4 @@ module.factory('titleService', ["$document",( $document ) ->
       $document.prop 'title'
   }
 ])
+module.exports = m

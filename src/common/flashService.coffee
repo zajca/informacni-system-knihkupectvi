@@ -1,5 +1,7 @@
-module = angular.module( 'FlashService', [])
-module.factory("FlashService", ["$rootScope",($rootScope) ->
+'use strict'
+
+m = angular.module( 'FlashService', [])
+m.factory("FlashService", ["$rootScope",($rootScope) ->
   show: (message,type) ->
     $rootScope.alerts = $rootScope.alerts || []
     flash = {}
@@ -22,7 +24,9 @@ module.factory("FlashService", ["$rootScope",($rootScope) ->
       $rootScope.alerts = []
     $rootScope.alerts.splice(index, 1)
 ])
-module.controller "FlashCtrl", ["$rootScope","$scope", "FlashService",($rootScope,$scope, FlashService) ->
+m.controller "FlashCtrl", ["$rootScope","$scope", "FlashService",($rootScope,$scope, FlashService) ->
   $scope.close = (index) ->
     FlashService.clear(index)
 ]
+
+module.exports = m
