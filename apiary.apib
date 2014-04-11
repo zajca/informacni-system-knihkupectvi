@@ -6,29 +6,38 @@ Welcome to the our sample API documentation. All comments can be written in (sup
 ---
 
 --
-Shopping Cart Resources
-The following is a section of resources related to the shopping cart
+Users resources
+The following is a section of resources related to the users
 --
-List products added into your shopping-cart. (comment block again in Markdown)
+List of users
 GET /users/
 < 200
 < Content-Type: application/json
 { "users": [
-{   "_id":"1"
+{   "_id":1
     "url": "/users/1",
     "name":"pan", 
     "surname":"tam",
     "buyed": [
         {
             "name":"kniha 1",
-            "_id":"1",
-            "url":"/book/1"
-        },{
-            "name":"kniha 2",
-            "_id":"2",
-            "url":"/book/2"
-        },],
-    "orders":[1,2,3],
+            "_id":1,
+            "url":"/book/1",
+            "price":120
+            "currency":"CZK"
+            "_order_id":1
+        }
+    ],
+    "favourite":[
+                {
+            "name":"kniha 1",
+            "_id":1,
+            "url":"/book/1",
+            "price":120
+            "currency":"CZK"
+            "_order_id":1
+        }
+    ],
     ""
 }
 ] }
