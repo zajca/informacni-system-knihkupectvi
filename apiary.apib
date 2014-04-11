@@ -16,7 +16,7 @@ GET /users/
 { "users": [
 {   "_id":1
     "url": "/users/1",
-    "name":"pan", 
+    "name":"pan",
     "surname":"tam",
     "buyed": [
         {
@@ -26,6 +26,16 @@ GET /users/
             "price":120
             "currency":"CZK"
             "_order_id":1
+            "payed":true
+        },
+        {
+            "name":"kniha 1",
+            "_id":1,
+            "url":"/book/1",
+            "price":120
+            "currency":"CZK"
+            "_order_id":1
+            "payed":false
         }
     ],
     "favourite":[
@@ -38,9 +48,49 @@ GET /users/
             "_order_id":1
         }
     ],
-    ""
+    "type":"registered"
 }
 ] }
+
+GET /user/:id
+< 200
+< Content-Type: application/json
+{   "_id":1
+    "url": "/users/1",
+    "name":"pan",
+    "surname":"tam",
+    "buyed": [
+        {
+            "name":"kniha 1",
+            "_id":1,
+            "url":"/book/1",
+            "price":120
+            "currency":"CZK"
+            "_order_id":1
+            "payed":true
+        },
+        {
+            "name":"kniha 1",
+            "_id":1,
+            "url":"/book/1",
+            "price":120
+            "currency":"CZK"
+            "_order_id":1
+            "payed":false
+        }
+    ],
+    "favourite":[
+                {
+            "name":"kniha 1",
+            "_id":1,
+            "url":"/book/1",
+            "price":120
+            "currency":"CZK"
+            "_order_id":1
+        }
+    ],
+    "type":"registered"
+}
 
 Save new products in your shopping cart
 POST /shopping-cart
