@@ -10,11 +10,27 @@ Shopping Cart Resources
 The following is a section of resources related to the shopping cart
 --
 List products added into your shopping-cart. (comment block again in Markdown)
-GET /shopping-cart
+GET /users/
 < 200
 < Content-Type: application/json
-{ "items": [
-{ "url": "/shopping-cart/1", "product":"2ZY48XPZ", "quantity": 1, "name": "New socks", "price": 1.25 }
+{ "users": [
+{   "_id":"1"
+    "url": "/users/1",
+    "name":"pan", 
+    "surname":"tam",
+    "buyed": [
+        {
+            "name":"kniha 1",
+            "_id":"1",
+            "url":"/book/1"
+        },{
+            "name":"kniha 2",
+            "_id":"2",
+            "url":"/book/2"
+        },],
+    "orders":[1,2,3],
+    ""
+}
 ] }
 
 Save new products in your shopping cart
