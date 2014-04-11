@@ -1,32 +1,43 @@
 'use strict'
 
 m = angular.module( 'FlashService', [])
-m.factory("FlashService", ["$rootScope",($rootScope) ->
+m.factory("FlashService", ["$rootScope","$timeout","$log","$translate",($rootScope,$timeout,$log,$translate) ->
+  counter=0
   show: (message,type) ->
     $rootScope.alerts = $rootScope.alerts || []
     flash = {}
     if (typeof message is "string")
       flash.msg = message
     else
-      if (message.flash?)
-        flash.msg = message.flash
-      else
-        if (message.data.flash?)
-          flash.msg = message.data.flash
-        else
-          flash.msg = "Nastala neočekávaná chyba, prosím opakujte akci znovu"
+      flash.msg = $translate('FLASH_UNKNOWN_ERROR')
 
+    $log.debug(counter)
+    counter++
+    flash.id=counter
     flash.type = type
     $rootScope.alerts.push(flash)
+    counter
 
-  clear: (index) ->
-    if index is undefined
-      $rootScope.alerts = []
-    $rootScope.alerts.splice(index, 1)
+  done: (id)->
+    angular.forEach $rootScope.alerts,(value,key)->
+      if value.id==id
+        value.ok=true
+        $timeout($rootScope.alerts.splice(key, 1),1000)
+
+  err: (id,msg)->
+    angular.forEach $rootScope.alerts,(value,key)->
+      if value.id==id
+        value.ok=true
+        value.err=msg
+
+  close: (id) ->
+    angular.forEach $rootScope.alerts,(value,key)->
+      if value.id==id
+        value.ok=true
 ])
 m.controller "FlashCtrl", ["$rootScope","$scope", "FlashService",($rootScope,$scope, FlashService) ->
-  $scope.close = (index) ->
-    FlashService.clear(index)
+  $scope.close = (id) ->
+    FlashService.close(id)
 ]
 
 module.exports = m

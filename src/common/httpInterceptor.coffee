@@ -8,15 +8,20 @@ module.exports = ["$httpProvider",($httpProvider) ->
 
   $httpProvider.interceptors.push ["$q","$log","FlashService","SpinnerService",($q,$log,FlashService,SpinnerService) ->
     request: (config) ->
-      if config.loading!=false
+
+      if !config.loading
         SpinnerService.set()
+
       $log.debug "REQUEST"
       $log.debug config
-      #        if config.method == "POST" or config.method == "PUT"
-      #          $log.debug csrfService.token
-      #          config.headers["X-CSRF-Token"] = csrfService.token
+
+      if config.method == "POST" or config.method == "PUT"
+        $log.debug csrfService.token
+        config.headers["X-CSRF-Token"] = csrfService.token
+
       if config.method == "POST"
         $log.debug "POST"
+
       config or $q.when(config)
     requestError: (rejection) ->
       $log.debug "REQUEST ERROR"
@@ -24,10 +29,10 @@ module.exports = ["$httpProvider",($httpProvider) ->
       $q.reject rejection
     response: (response) ->
       SpinnerService.unset()
-      $log.debug "RESPONSE OK"
+      msg="RESPONSE OK"
+      msg+" POST" if response.config.method == "POST"
+      $log.debug msg
       $log.debug response
-      if response.config.method == "POST"
-        $log.debug "POST"
       response or $q.when(response)
     responseError: (rejection) ->
       SpinnerService.unset()
