@@ -4,6 +4,9 @@ Module dependencies.
 express = require("express")
 http = require("http")
 path = require("path")
+passport = require('passport')
+LocalStrategy = require('passport-local').Strategy
+
 app = express()
 
 # READ CONFIG
@@ -15,6 +18,11 @@ require("./config").setUpExpress(app,config)
 # config db
 db = require('./database')
 db.setUp config
+User = db.user
+
+#setup passport
+passport.serializeUser User.serializeUser()
+passport.deserializeUser User.deserializeUser()
 
 ###
 REQUIRE ROUTES

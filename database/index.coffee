@@ -19,3 +19,5 @@ module.exports =
       process.exit(1)
       
     db.on "open", -> clearTimeout(dbTimeout)
+
+  user: require "./schema/user"

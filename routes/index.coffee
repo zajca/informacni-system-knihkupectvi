@@ -5,4 +5,4 @@ module.exports =
   editor: (req, res) ->
     res.render "editor"
     
-  user: require "./user"
+  user: require "./v1/user"
