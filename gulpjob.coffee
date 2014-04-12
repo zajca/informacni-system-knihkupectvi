@@ -27,6 +27,7 @@ libnotify = require('libnotify')
 browserify = require('gulp-browserify')
 jade = require('gulp-jade')
 filesize = require('gulp-filesize')
+nodemon = require('gulp-nodemon')
 
 modules=[
   "vendor/angular/angular.js",
@@ -135,7 +136,7 @@ DEVEL
 ###
 gulp.task 'dev',->
   prod = false
-  runSequence "default",["watch"]
+  runSequence "default",["watch"],"devServer"
 ###
 PRODUCTION
 ###
@@ -383,3 +384,31 @@ gulp.task('JADE', ->
   .pipe(gulp.dest("#{dirs.dest}/partials"))
   .pipe(gulpif(!prod,livereload(server)))
 )
+###
+
+NODE SERVER
+
+###
+gulp.task "devServer", ->
+  nodemon(
+    script: "app.js"
+    ext: "jade coffee"
+    env:
+      "ENV":"dev"
+    ignore: ["./src/**/*","./assets/**/*"]
+  ).on("change", ["serverLint"]).on "restart", ->
+    libnotify.notify("NODEMON RESTART")
+    console.log "restarted!"
+
+gulp.task 'serverLint', ->
+  gulp.src([
+    "./config/**/*.coffee"
+    "./database/**/*.coffee"
+    "./middleware/**/*.coffee"
+    "./routes/**/*.coffee"
+    "./config.coffee"
+    "./index.coffee"
+  ])
+  .pipe(plumber())
+  .pipe(coffeelint())
+  .pipe(coffeelint.reporter())

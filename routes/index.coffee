@@ -1,7 +1,8 @@
 #
 # * GET home page.
 #
-exports.editor = (req, res) ->
-  res.render "editor",
-    title: "Express"
-  return
+module.exports =
+  editor: (req, res) ->
+    res.render "editor"
+    
+  user: require "./user"
