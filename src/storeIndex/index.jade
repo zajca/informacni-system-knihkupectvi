@@ -1,0 +1,15 @@
+div#filter
+  .side
+
+  .content
+    .sort
+      .byDate
+      .byPrice
+      .byTitle
+    .genre
+    .price
+    .pages
+    .author
+div#index
+  .content
+    book(ng-repeat="(i, book) in books" title="book.title" price="book.price" author="book.author")

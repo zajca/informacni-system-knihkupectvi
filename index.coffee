@@ -32,8 +32,15 @@ router = require("./routes")
 app.get "/partials/:partial", (req, res, next) ->
   res.render "assets/partials/#{req.params.partial}"
 
-app.get "/", router.editor
+#VIEWS ROUTES
+app.get "/", router.store
 app.get "/editor", router.editor
+app.get "/admin", router.admin
+app.get "/finance", router.finance
+app.get "/create", router.create
+app.get "/storage", router.storage
+
+#API ROUTES
 app.get "/users", router.user.list
 
 http.createServer(app).listen app.get("port"), ->

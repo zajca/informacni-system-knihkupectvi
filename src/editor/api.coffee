@@ -13,7 +13,7 @@ m.factory("api",["CONF","FlashService","$translate","$http","$log",(CONF,FlashSe
 
   updateProject:(id)->
 
-  renderProject:(id)->   
+  renderProject:(id)->
 
 ]
 )

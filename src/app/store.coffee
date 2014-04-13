@@ -16,14 +16,12 @@ require "./../common/spinnerService"
 require "./../common/titleService"
 require "./../common/bind-html-unsafe"
 #CTRL
-require "./editorCTRL"
-require "./../editor/routes"
-require "./../editor/editor"
-require "./../editor/directive"
+require "./storeCTRL"
+require "./../storeIndex/routes"
 #i18n
 require "./../i18n/index"
 
-module = angular.module("editor", [
+module = angular.module("store", [
   "ui.router"
   "ngAnimate"
   "ngTouch"
@@ -37,14 +35,13 @@ module = angular.module("editor", [
   "i18n"
   "FlashService"
   "SpinnerService"
-  "editor.ctrl"
-  "editor.editor"
+  "store.ctrl"
+  "store.router"
 ])
 
 module.config ["$urlRouterProvider","$locationProvider","$logProvider",($urlRouterProvider,$locationProvider,$logProvider)->
-  conf = require("./editor_dev.json")
-  console.log conf
-  $urlRouterProvider.otherwise "/editor"
+  conf = require("./store_dev.json")
+  $urlRouterProvider.otherwise "/"
   $locationProvider.html5Mode(conf.html5Mode).hashPrefix('!')
   $logProvider.debugEnabled conf.debug
 ]
@@ -52,5 +49,5 @@ module.config ["$urlRouterProvider","$locationProvider","$logProvider",($urlRout
 module.config require("./../common/httpInterceptor")
 
 module.run ["titleService",(titleService) ->
-  titleService.setSuffix " | Editor"
+  titleService.setSuffix " | Store"
 ]

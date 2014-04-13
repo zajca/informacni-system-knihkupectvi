@@ -14,17 +14,5 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='app', data-ng-csp='data-ng-
       //INJECT:js (js)
       //END INJECT
 
-  body
-    //if lt IE 9
-      .browser-alert-wraper
-        .content
-          | Je nám líto, ale tvůj prohlížeč je patrně zastaralý a s naší aplikací si nerozumí. Prosím nainstaluj si jeden z následujících.
-        .dim
-    spinner
-    .container(ng-cloak='ng-cloak')
-      .topMenu
-      .content
-        #menu
-          ul
-            li(ng-repeat='m in menu', ui-sref='{{m.state}}', ng-class='{active: m.active}') {{m.name}}
-        .anim(ui-view='main')
+  body.
+    create

@@ -94,7 +94,7 @@ gulp.task "watch", ->
 
   gulp.watch "#{dirs.src}/**/*.coffee", (event)->
     libnotify.notify("FILE: #{event.path} - #{event.type}")
-    runSequence 'COFFEE-EDITOR'
+    runSequence 'COFFEE'
 
   gulp.watch ["#{dirs.src}/**/*.png","!#{dirs.src}/**/*_ns.png"], (event)->
     libnotify.notify("FILE: #{event.path} - #{event.type}")
@@ -128,7 +128,7 @@ gulp.task 'default', ->
     "JADE"
     "IMG_OTHER"
   ],
-    "COFFEE-EDITOR",
+    "COFFEE"
     "LESS"
     "watch"
 ###
@@ -201,7 +201,8 @@ COFFEE
 
 ###
 gulp.task 'COFFEE',->
-  runSequence "COFFEELINT",["COFFEE-ADMIN","COFFEE-CREATE","COFFEE-EDITOR","COFFEE-FINANCE","COFFEE-PORTAL","COFFEE-STORE"]
+  runSequence "COFFEELINT",["COFFEE-EDITOR","COFFEE-STORE"]
+#  runSequence "COFFEELINT",["COFFEE-ADMIN","COFFEE-CREATE","COFFEE-EDITOR","COFFEE-FINANCE","COFFEE-PORTAL","COFFEE-STORE"]
 
 gulp.task 'COFFEELINT', ->
   gulp.src("#{dirs.src}/**/*.coffee")
@@ -282,20 +283,20 @@ gulp.task 'COFFEE-EDITOR', ["COFFEELINT"] ,->
 #   .pipe(gulpif(prod,uglify mangle:false))
 #   .pipe(gulp.dest(config.jsDest))
 #   .pipe(gulpif(!prod,livereload(server)))
-# gulp.task 'COFFEE-STORE', ["COFFEELINT"] ,->
-#   gulp.src(config.store.cs.src, { read: false })
-#   .pipe(browserify({
-#       debug: true
-#       transform: ['caching-coffeeify', 'brfs']
-#       extensions: ['.coffee'],
-#       noParse: modules
-#     }))
-#   .pipe(gulpif(prod,rename('store.js',suffix: ".min")))
-#   .pipe(gulpif(!prod,rename('store.js')))
-#   .pipe(gulpif(prod, rev()))
-#   .pipe(gulpif(prod,uglify mangle:false))
-#   .pipe(gulp.dest(config.jsDest))
-#   .pipe(gulpif(!prod,livereload(server)))
+gulp.task 'COFFEE-STORE', ["COFFEELINT"] ,->
+  gulp.src(config.store.cs.src, { read: false })
+  .pipe(browserify({
+      debug: true
+      transform: ['caching-coffeeify', 'brfs','envify']
+      extensions: ['.coffee'],
+      noParse: modules
+    }))
+  .pipe(gulpif(prod,rename('store.js',suffix: ".min")))
+  .pipe(gulpif(!prod,rename('store.js')))
+  .pipe(gulpif(prod, rev()))
+  .pipe(gulpif(prod,uglify mangle:false))
+  .pipe(gulp.dest(config.jsDest))
+  .pipe(gulpif(!prod,livereload(server)))
 ###
 
 
