@@ -62,6 +62,9 @@
   "engines": {
     "node": ">=0.8.0"
   },
+  "browserify": {
+    "transform": ["coffeeify", "brfs","envify" ]
+  },
   "scripts": {
     "dev": "gulp dev",
     "prod": "gulp prod"

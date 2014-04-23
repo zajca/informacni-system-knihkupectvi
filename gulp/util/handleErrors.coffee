@@ -6,7 +6,7 @@ module.exports = ->
   notify.onError(
     title: "Compile Error"
     message: "<%= error.message %>"
-  )
+  ).apply(this, arguments)
   # Keep gulp from hanging on this task
   @emit "end"
   return
