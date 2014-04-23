@@ -3,7 +3,6 @@ require "./../../vendor/angular/angular.js"
 require "./../../vendor/angular-ui-router/release/angular-ui-router"
 require "./../../vendor/angular-animate/angular-animate"
 require "./../../vendor/angular-touch/angular-touch"
-#require "./../../vendor/angular-easyfb/angular-easyfb"
 require "./../../vendor/angular-translate/angular-translate"
 require "./../../libs/cs_cz"
 #COMMON

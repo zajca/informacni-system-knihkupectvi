@@ -1,2 +1,2 @@
 require('coffee-script');
-require('./gulpjob.coffee');
+require('./gulp');
