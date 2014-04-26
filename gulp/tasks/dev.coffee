@@ -3,4 +3,4 @@ runSequence = require('run-sequence')
 
 gulp.task 'dev',->
   prod = false
-  runSequence "default",["watch"],"serve"
+  runSequence "default","serve","watch"

@@ -1,5 +1,5 @@
 #VENDOR
-require "./../../vendor/angular/angular.js"
+require "angular"
 require "./../../vendor/angular-ui-router/release/angular-ui-router"
 require "./../../vendor/angular-animate/angular-animate"
 require "./../../vendor/angular-touch/angular-touch"

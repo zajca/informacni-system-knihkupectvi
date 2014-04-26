@@ -10,6 +10,7 @@ livereload = require("gulp-livereload")
 
 
 gulp.task 'LESS', ["SPRITES"] ,->
+# gulp.task 'LESS', ->
   gulp.src("./src/less/main.less")
   .pipe(plumber())
   # .pipe(recess())
@@ -35,6 +36,7 @@ gulp.task('SPRITES', ->
   gulp.src(["./src/images/**/*.png","!./src/images/**/*_ns.png"])
   .pipe(plumber())
   .pipe(sprite(
+      base64: true,
       name: 'sprite.png'
       style: 'sprites.less',
       cssPath: 'images/',
@@ -42,6 +44,4 @@ gulp.task('SPRITES', ->
     ))
   .pipe(gulpif('*.png', gulp.dest("./assets/images")))
   .pipe(gulpif('*.less', gulp.dest("./src/less")))
-  # .pipe(gulpif(!prod,livereload(server)))
-  .pipe livereload()
 )
