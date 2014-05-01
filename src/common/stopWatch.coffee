@@ -1,3 +1,5 @@
+'use strict'
+
 # update Model
 m = angular.module("stopwatch", [])
 m.directive "stopWatch", ["$timeout",($timeout) ->

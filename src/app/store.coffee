@@ -8,6 +8,7 @@ require "./../../libs/cs_cz"
 require "./../../vendor/angular-carousel/dist/angular-carousel"
 require "./../../vendor/angular-strap/dist/angular-strap"
 require "./../../vendor/angular-strap/dist/angular-strap.tpl"
+require "./../../vendor/angular-xeditable/dist/js/xeditable"
 
 #COMMON
 require "./../common/device"
@@ -46,9 +47,13 @@ module = angular.module("store", [
   "match"
   "user"
   "mgcrea.ngStrap"
+  "xeditable"
 ])
 
 module.constant "CONF", require("./store_dev.json")
+
+module.run (editableOptions) ->
+  editableOptions.theme = 'bs3'
 
 module.config ["$urlRouterProvider","$locationProvider","$logProvider","CONF",($urlRouterProvider,$locationProvider,$logProvider,conf)->
   $urlRouterProvider.otherwise "/"

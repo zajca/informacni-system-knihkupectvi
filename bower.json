@@ -24,7 +24,8 @@
     "ng-pdfviewer": "~0.2.1",
     "angular-tree-control": "~0.1.4",
     "angular-ui-layout": "bower",
-    "angular-motion": "~0.3.2"
+    "angular-motion": "~0.3.2",
+    "angular-xeditable": "~0.1.8"
   },
   "resolutions": {
     "angular": "1.2.16"

@@ -1,3 +1,5 @@
+'use strict'
+
 m = angular.module( 'titleService', [])
 
 m.factory('titleService', ["$document",( $document ) ->

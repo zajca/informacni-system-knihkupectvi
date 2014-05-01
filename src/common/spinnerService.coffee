@@ -1,3 +1,5 @@
+'use strict'
+
 m = angular.module( 'SpinnerService', [])
 m.factory("SpinnerService",["$rootScope",($rootScope) ->
   set:->

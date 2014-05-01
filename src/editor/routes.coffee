@@ -1,3 +1,5 @@
+'use strict'
+
 require "./editor"
 
 m = angular.module("editor.editor", ["editor.editor.ctrl"])

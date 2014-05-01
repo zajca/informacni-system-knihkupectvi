@@ -1,3 +1,5 @@
+'use strict'
+
 require "./index"
 
 m = angular.module("store.router", ["store.index.ctrl"])

@@ -1,3 +1,5 @@
+'use strict'
+
 m = angular.module("match", [])
 
 m.directive "match", [->

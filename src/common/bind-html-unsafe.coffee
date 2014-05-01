@@ -1,4 +1,5 @@
 "use strict"
+
 m = angular.module("bindHtmlUnsafe", [])
 
 m.directive "bindHtmlUnsafe", ["$compile",($compile) ->

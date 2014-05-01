@@ -1,3 +1,5 @@
+'use strict'
+
 m=angular.module("AuthenticationService",[])
 
 m.factory "AuthenticationService", [

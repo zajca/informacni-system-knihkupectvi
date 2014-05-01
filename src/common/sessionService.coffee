@@ -1,3 +1,5 @@
+'use strict'
+
 m = angular.module( 'SessionService', [])
 m.factory("SessionService", ->
   get: (key) ->

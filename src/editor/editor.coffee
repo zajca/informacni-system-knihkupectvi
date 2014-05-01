@@ -1,3 +1,5 @@
+'use strict'
+
 require "./../common/titleService"
 require "./../../vendor/angular-ui-ace/ui-ace"
 require "./../../vendor/ng-pdfviewer/ng-pdfviewer"

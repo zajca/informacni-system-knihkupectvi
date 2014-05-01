@@ -1,3 +1,5 @@
+'use strict'
+
 m = angular.module( 'device', [])
 
 m.factory("device", ["$window",($window) ->

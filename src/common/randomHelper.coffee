@@ -1,3 +1,5 @@
+'use strict'
+
 m= angular.module( 'random', [])
 m.factory "random", ->
   randomNumber:->

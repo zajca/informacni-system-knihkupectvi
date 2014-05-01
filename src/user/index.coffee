@@ -1,3 +1,5 @@
+'use strict'
+
 require "./AuthenticationService"
 require "./api"
 require "./router"

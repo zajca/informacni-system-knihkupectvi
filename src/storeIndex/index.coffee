@@ -1,3 +1,5 @@
+'use strict'
+
 require "./../common/titleService"
 
 m = angular.module("store.index.ctrl", ["titleService"])

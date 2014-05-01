@@ -1,3 +1,5 @@
+'use strict'
+
 m = angular.module("preventScroll",[])
 m.directive "preventScroll", ["$swipe", ($swipe) ->
   restrict: "AC"

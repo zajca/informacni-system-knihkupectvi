@@ -1,3 +1,5 @@
+'use strict'
+
 m = angular.module("editor.editor.directive", [])
 m.directive "editor",
 [

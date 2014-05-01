@@ -1,3 +1,5 @@
+'use strict'
+
 m = angular.module("store.book.directive", [])
 m.directive "book",
 [
