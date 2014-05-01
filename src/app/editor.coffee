@@ -1,6 +1,6 @@
 #VENDOR
 require "angular"
-require "./../../vendor/angular-ui-router/release/angular-ui-router"
+require "angular-ui-router"
 require "./../../vendor/angular-animate/angular-animate"
 require "./../../vendor/angular-touch/angular-touch"
 require "./../../vendor/angular-translate/angular-translate"
@@ -19,6 +19,8 @@ require "./editorCTRL"
 require "./../editor/routes"
 require "./../editor/editor"
 require "./../editor/directive"
+
+require "../user"
 #i18n
 require "./../i18n/index"
 

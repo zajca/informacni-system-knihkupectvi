@@ -6,6 +6,7 @@ http = require("http")
 path = require("path")
 passport = require('passport')
 LocalStrategy = require('passport-local').Strategy
+mongooseRestEndpoints = require('mongoose-rest-endpoints')
 
 app = express()
 
@@ -41,7 +42,8 @@ app.get "/create", router.create
 app.get "/storage", router.storage
 
 #API ROUTES
-app.get "/users", router.user.list
+# app.get "/users", router.user.list
+new mongooseRestEndpoints.endpoint('/api/v1/users', 'User').register(app);
 
 http.createServer(app).listen app.get("port"), ->
   console.log "Express server listening on port " + app.get("port")

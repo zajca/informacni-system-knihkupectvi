@@ -1,6 +1,7 @@
 mongoose = require 'mongoose'
 Schema = mongoose.Schema
 passportLocalMongoose = require('passport-local-mongoose')
+gridfs = require '../plugins/gridfs'
 
 Promise = require('bluebird')
 uuid = require('node-uuid')
@@ -24,6 +25,8 @@ User = new Schema
     required: true
     unique: true
     index: true
+  img:
+    type: Schema.Types.Mixed
   name:
     type:String
     required:false
@@ -42,17 +45,22 @@ User = new Schema
   phone:
     type:String
     required:false
-  buyed_books:
+  orders:
     [
       type: Schema.Types.ObjectId
-      ref: "Book"
+      ref: "Order"
+    ]
+  projects:
+    [
+      type: Schema.Types.ObjectId
+      ref: "Project"
     ]
   whished_books:
     [
       type: Schema.Types.ObjectId
       ref: "Book"
     ]
-  owned_books:
+  payed_books:
     [
       type: Schema.Types.ObjectId
       ref: "Book"
@@ -60,12 +68,21 @@ User = new Schema
   roles:
     type: [String]
     default: ['anonymous']
+  special:
+    canRead:
+      projects:[
+        type: Schema.Types.ObjectId
+        ref: "Project"
+      ]
+    canEdit:
+      projects:[
+        type: Schema.Types.ObjectId
+        ref: "Project"
+      ]
   meta: [
-      {
-        key: String
-        value: String
-      }
-    ]
+    key: String
+    value: String
+  ]
   updated_at:
     type:Date
     default: Date.now
@@ -76,9 +93,22 @@ User = new Schema
 # PLUGINS
 User.plugin(passportLocalMongoose)
 
+User.addImg = (file, options, fn) ->
+  gridfs.putFile file.path, file.filename, options, (err, result) ->
+    this.img = result
+    this.save fn
+
+User.getImg = (file, options, fn) ->
+  gridfs.get req.params.id, (err, file) ->
+    res.header "Content-Type", file.type
+    res.header "Content-Disposition", "attachment; filename=#{file.filename}"
+    file.stream(true).pipe(res)
+
 User.create = ->
 
-User.canDownloadBook = ->
+User.canDownloadBook = (id, options, fn) ->
+  if id in this.payed_books
+    true
 
 # EXPORT
 module.exports = mongoose.model 'User', User

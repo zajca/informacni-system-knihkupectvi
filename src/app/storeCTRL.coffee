@@ -28,6 +28,16 @@ m.controller "StoreCtrl", [
     ,
       name:"MENU_STORAGE"
       route: "/storage"
+    ,
+      name:"MENU_REGISTER"
+      route: undefined
+      special: "register"
+      template: "user/register.tpl.html"
+    ,
+      name:"MENU_LOGIN"
+      route: undefined
+      special: "login"
+      template: "user/login.tpl.html"
     ]
 
     $rootScope.$on('$stateChangeSuccess',

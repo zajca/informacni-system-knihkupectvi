@@ -1,0 +1,22 @@
+<div class="popover">
+  <div class="arrow"></div>
+    <h3 class="popover-title" ng-bind="title" ng-show="title"></h3>
+    <div class="popover-content">
+      <div class="panel">
+        <div class="panel-heading">Sign up</div>
+        <form name="form" method="post" action="/signup" novalidate="novalidate">
+          <div class="form-group">
+            <label for="email" class="control-label">Email</label>
+            <input type="email" ng-model="email" name="email" id="email" placeholder="Email" required="required" class="form-control" autofocus="autofocus"/>
+            <span ng-show="form.email.$dirty &amp;&amp; form.email.$error.email" class="help-block">Email is invalid</span>
+          </div>
+          <div class="form-group">
+            <label for="password" class="control-label">Password</label>
+            <input type="password" name="password" id="password" ng-model="password" required="required" match="verification" class="form-control"/>
+            <span ng-show="form.password.$dirty &amp;&amp; form.password.$error.required" class="help-block">Please enter a password</span>
+          </div>
+          <input type="submit" value="Sign up" ng-disabled="form.$invalid" class="btn btn-primary"/>
+        </form>
+      </div>
+    </div>
+  </div>

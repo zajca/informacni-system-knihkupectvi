@@ -35,7 +35,7 @@ m.factory("FlashService", ["$rootScope","$timeout","$log","$translate",($rootSco
       if value.id==id
         value.ok=true
 ])
-m.controller "FlashCtrl", ["$rootScope","$scope", "FlashService",($rootScope,$scope, FlashService) ->
+m.controller "FlashCtrl", ["$scope", "FlashService",($scope, FlashService) ->
   $scope.close = (id) ->
     FlashService.close(id)
 ]

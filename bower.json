@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "devDependencies": {
     "lesshat": "~2.0.*",
-    "bootstrap": "~3.1.*"
+    "bootstrap": "~3.1.*",
+    "angular-carousel": "~0.2.2"
   },
   "dependencies": {
     "angular": "=1.2.15",
@@ -22,9 +23,10 @@
     "angular-loader": "~1.2.15",
     "ng-pdfviewer": "~0.2.1",
     "angular-tree-control": "~0.1.4",
-    "angular-ui-layout": "bower"
+    "angular-ui-layout": "bower",
+    "angular-motion": "~0.3.2"
   },
   "resolutions": {
-    "angular": "=1.2.15"
+    "angular": "1.2.16"
   }
 }

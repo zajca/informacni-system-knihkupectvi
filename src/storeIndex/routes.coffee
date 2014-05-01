@@ -11,7 +11,7 @@ m.config(
         views:
           main:
             controller: "StoreIndexCtrl"
-            templateUrl: "partials/store/index.html"
+            templateUrl: "partials/storeIndex/index.tpl.html"
       )
   ]
 )

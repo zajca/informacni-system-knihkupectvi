@@ -44,6 +44,7 @@ html#ng-app(xmlns:ng='http://angularjs.org', lang='cs', dir='ltr', ng-controller
                 li(ng-repeat='m in menu' data-match-route='{{m.route}}')
                   a(ng-href="{{m.route}}" target="_self" ng-if="m.route") {{m.name|translate}}
                   a(ui-sref="{{m.state}}" ng-if="m.state") {{m.name|translate}}
+                  a(href ng-click="{{m.special}}()" ng-if="m.special" title="{{m.name|translate}}" data-placement="bottom" data-template="/partials/{{m.template}}" data-animation="am-flip-x" bs-popover) {{m.name|translate}}
           .anim(ui-view='main')
 
         <!--[if lt IE 8]>
