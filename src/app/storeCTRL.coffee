@@ -5,12 +5,20 @@ m.controller "StoreCtrl", [
   "$state"
   "$rootScope"
   "$translate"
+  "$basket"
   (
     $scope
     $state
     $rootScope
     $translate
+    $basket
   ) ->
+    
+    updateBasket = ->
+      $scope.basket  = if $basket.sum().n > 1 then true else false 
+
+    $scope.$on('BASKET_UPDATE',updateBasket)
+
     $scope.init =->
   #    API.csrf()
     $scope.menu=[
@@ -36,13 +44,9 @@ m.controller "StoreCtrl", [
     ,
       name:"MENU_LOGIN"
       route: undefined
-      special: "login"
+      # special: "login"
+      icon: "fa-sign-in"
       template: "user/login.tpl.html"
-    ,
-      name:"MENU_BASKET"
-      route: undefined
-      special: "basket"
-      template: "basket/popover.tpl.html"
     ]
 
     $scope.books=[

@@ -1,12 +1,13 @@
 'use strict'
 
 
-module.exports = ["localStorageService",(ls) ->
+module.exports = ["localStorageService","$rootScope",(ls,root) ->
   add: (item,n)->
     items = ls.get('basketItems') || []
     item.n = n || 1
     items.push item
     ls.set("basketItems",items)
+    root.$broadcast("BASKET_UPDATE")
 
   sum: ->
     items = ls.get('basketItems') || []
@@ -25,17 +26,20 @@ module.exports = ["localStorageService",(ls) ->
         items.splice(key,1)
 
     ls.set("basketItems",items)
+    root.$broadcast("BASKET_UPDATE")
 
   removeByIndex: (index)->
     items = ls.get('basketItems') || []
     items.splice(index,1)
 
     ls.set("basketItems",items)
+    root.$broadcast("BASKET_UPDATE")
 
   inc: (index)->
     items = ls.get('basketItems') || []
     items[index].n++
     ls.set("basketItems",items)
+    root.$broadcast("BASKET_UPDATE")
 
   dec: (index)->
     items = ls.get('basketItems') || []
@@ -45,10 +49,12 @@ module.exports = ["localStorageService",(ls) ->
       items[index].n--
           
     ls.set("basketItems",items)
+    root.$broadcast("BASKET_UPDATE")
 
   get: ->
     ls.get("basketItems")
 
   clear: ->
     ls.remove("basketItems")
+    root.$broadcast("BASKET_UPDATE")
 ]

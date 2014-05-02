@@ -53,6 +53,7 @@ BOOTSTRAP
 //@import "vendor/angular-motion/src/fade-and-scale/fade-and-scale";
 //@import "vendor/angular-motion/src/slide/slide";
 
+@import (less) "vendor/animate.css/animate.css";
 
 //@import "sprites";
 @import "../common/spinner";
@@ -87,95 +88,9 @@ h1{
     font-size: 55px;
   }
 }
-.container{
-  width: 745px;
-  padding: 0;
+.navbar{
+  margin-bottom:0;
 }
-.content{
-  background-color: #ffffff;
-}
-p{
-  color: #ffffff;
-  font-size: 15px;
-}
-.upper{
-  text-transform: uppercase;
-}
-.hand{
-  cursor: pointer;
-}
-.center{
-  margin:0 auto;
-}
-.content_margin{
-  margin-top: 130px;
-}
-.relative{
-  position: relative;
-}
-.clear{
-  clear:both;
-}
-p{
-  color:@color_blue;
-  font-family: MyriadProSemiboldItalic;
-}
-.boxes{
-  .left,.right{
-    text-align: center;
-    float: right;
-  }
-  .left{
-    width: 48%;
-    margin-right: 2%;
-  }
-  .right{
-    width: 48%;
-  }
-}
-.boxes3{
-  .left,.right,.center{
-    text-align: center;
-    float: right;
-  }
-  .center{
-    width: 32%;
-    margin-right: 2%;
-  }
-  .left{
-    width: 32%;
-    margin-right: 2%;
-  }
-  .right{
-    width: 32%;
-  }
-}
-.button{
-  width: 240px;
-  height: 60px;
-  .lh-border-radius(10px);
-  .lh-background-image(linear-gradient(to bottom, #F54D7D 0%,#F00045 100%));
-  line-height: 60px;
-  font-size: 16px;
-  color: #ffffff;
-  text-align: center;
-  cursor: pointer;
-  &:hover{
-    position: relative;
-    top:1px;
-  }
-}
-.aleft{
-  text-align: left;
-}
-.aright{
-  text-align: right;
-}
-.fleft{
- float: left;
-}
-.fright{
-  float: right;
-}
+
 @import "menu";
 @import "../editor/editor";

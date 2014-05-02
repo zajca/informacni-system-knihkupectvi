@@ -1,11 +1,31 @@
 .book-image{
   width: 270px;
   height: 430px;
-  border: 1px solid red;
 }
 
+
+@bookWidth: 125px;
+@bookHeight: 200px;
+
 .book-thumbnail{
-  width: 125px;
-  height: 200px;
-  border: 1px solid red;
+  width: @bookWidth;
+  height: @bookHeight;
+}
+
+.book{
+  position:relative;
+  img{
+    position:absolete;
+    top:0;
+    left:0;
+    width: @bookWidth;
+    height: @bookHeight;
+  }
+  .hover{
+    position:absolute;
+    top:50px;
+    width: @bookWidth;
+    height: @bookHeight - 50;
+
+  }
 }

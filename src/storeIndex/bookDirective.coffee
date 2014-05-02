@@ -8,19 +8,10 @@ m.directive "book",
   $timeout
 ) ->
   restrict: "E"
-  scope:
-    name:"="
-    img:"="
-    price:"="
-    id:"="
+  scope:false
   replace:true
-  template:'
-    <div class="book">
-require "./editor"
-      <div>
-    </div>'
+  template:'<div class="book" ng-mouseover="hover = true;" ng-mouseleave="hover = false;"><img src="http://placehold.it/125x200" /><div class="hover" ng-if="hover">{{book.name}}</div><div>'
   link: (scope)->
   controller:($scope)->
-
 ]
 module.exports = m

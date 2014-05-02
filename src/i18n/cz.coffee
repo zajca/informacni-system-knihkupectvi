@@ -26,6 +26,7 @@ m.config ["$translateProvider",($translateProvider) ->
   EMAIL: "Email"
   PASSWORD: "Heslo"
   LANGUAGE: "Jazyk"
+  PASSWORD_AGAIN: "Opakovat heslo"
 ]
 
 module.exports = m

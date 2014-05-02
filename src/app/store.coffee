@@ -9,6 +9,7 @@ require "./../../vendor/angular-carousel/dist/angular-carousel"
 require "./../../vendor/angular-strap/dist/angular-strap"
 require "./../../vendor/angular-strap/dist/angular-strap.tpl"
 require "./../../vendor/angular-xeditable/dist/js/xeditable"
+require "./../../vendor/ngAnimate-animate.css/animate"
 
 #COMMON
 require "./../common/device"
@@ -26,6 +27,7 @@ require "./../storeIndex/routes"
 require "./../user"
 require "./../settings"
 require "./../basket"
+require "./../book"
 
 #i18n
 require "./../i18n"
@@ -52,6 +54,8 @@ module = angular.module("store", [
   "mgcrea.ngStrap"
   "xeditable"
   "settings"
+  "ngAnimate-animate.css"
+  "book"
 ])
 
 module.constant "CONF", require("./store_dev.json")

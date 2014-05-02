@@ -35,6 +35,8 @@ app.get "/partials/:partial", (req, res, next) ->
 
 #VIEWS ROUTES
 app.get "/", router.store
+app.get "/book", router.store
+app.get "/book/*", router.store
 app.get "/editor", router.editor
 app.get "/admin", router.admin
 app.get "/finance", router.finance
