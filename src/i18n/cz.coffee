@@ -25,6 +25,7 @@ m.config ["$translateProvider",($translateProvider) ->
   SIGN_IN_BUTTON: "Přihásit se"
   EMAIL: "Email"
   PASSWORD: "Heslo"
+  LANGUAGE: "Jazyk"
 ]
 
 module.exports = m

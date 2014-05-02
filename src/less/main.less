@@ -1,7 +1,7 @@
 @import "common/reset";
 //@import "vendor/font-awesome/less/variables";
-//@fa-font-path:"fonts";
-//@import "vendor/font-awesome/less/mixins";
+//@fa-font-path:"vendor/font-awesome/fonts";
+//@import "vendor/";
 //@import "vendor/font-awesome/less/path";
 //@import "vendor/font-awesome/less/core";
 //@import "vendor/font-awesome/less/larger";
@@ -13,7 +13,8 @@
 //@import "vendor/font-awesome/less/stacked";
 //@import "vendor/font-awesome/less/icons";
 
-//@import "vendor/font-awesome/less/font-awesome";
+@import "vendor/font-awesome/less/font-awesome";
+@fa-font-path:"/vendor/font-awesome/fonts";
 @import "vendor/lesshat/build/lesshat-prefixed";
 
 /*
@@ -48,11 +49,16 @@ BOOTSTRAP
 
 //ANGULARSTRAP-ANIMATION
 @import "vendor/angular-motion/src/flip/flip";
+@import "vendor/angular-motion/src/fade-and-slide/fade-and-slide";
+//@import "vendor/angular-motion/src/fade-and-scale/fade-and-scale";
+//@import "vendor/angular-motion/src/slide/slide";
 
 
 //@import "sprites";
 @import "../common/spinner";
+@import "../storeIndex/book.less";
 @import "common/browserAlerts";
+@import "common/modal";
 
 //CAROUSEL
 @import (less) "vendor/angular-carousel/dist/angular-carousel.css";

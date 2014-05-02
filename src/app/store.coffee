@@ -24,6 +24,8 @@ require "./../common/matchDirective"
 require "./storeCTRL"
 require "./../storeIndex/routes"
 require "./../user"
+require "./../settings"
+require "./../basket"
 
 #i18n
 require "./../i18n"
@@ -46,8 +48,10 @@ module = angular.module("store", [
   "store.router"
   "match"
   "user"
+  "basket"
   "mgcrea.ngStrap"
   "xeditable"
+  "settings"
 ])
 
 module.constant "CONF", require("./store_dev.json")

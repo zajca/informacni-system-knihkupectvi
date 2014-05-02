@@ -20,7 +20,7 @@ module.exports =
     app.use passport.initialize()
     app.use passport.session()
     app.use express.static(path.join(__dirname, "assets"))
-    app.use express.static(path.join(__dirname, "vendor"))
+    app.use '/vendor', express.static(path.join(__dirname, "vendor"))
 
   getConfig: (app,env)->
     if env is "dev"

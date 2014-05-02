@@ -38,6 +38,19 @@ m.controller "StoreCtrl", [
       route: undefined
       special: "login"
       template: "user/login.tpl.html"
+    ,
+      name:"MENU_BASKET"
+      route: undefined
+      special: "basket"
+      template: "basket/popover.tpl.html"
+    ]
+
+    $scope.books=[
+      {
+        name:"book"
+        id: "1"
+        img: "test"
+      }
     ]
 
     $rootScope.$on('$stateChangeSuccess',
