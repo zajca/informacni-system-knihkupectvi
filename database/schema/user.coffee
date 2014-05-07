@@ -1,6 +1,6 @@
 mongoose = require 'mongoose'
 Schema = mongoose.Schema
-passportLocalMongoose = require('passport-local-mongoose')
+# passportLocalMongoose = require('passport-local-mongoose')
 gridfs = require '../plugins/gridfs'
 
 Promise = require('bluebird')
@@ -27,6 +27,8 @@ User = new Schema
     index: true
   img:
     type: Schema.Types.Mixed
+  locale:
+    type: String
   name:
     type:String
     required:false
@@ -91,7 +93,7 @@ User = new Schema
     default: Date.now
 
 # PLUGINS
-User.plugin(passportLocalMongoose)
+# User.plugin(passportLocalMongoose)
 
 User.addImg = (file, options, fn) ->
   gridfs.putFile file.path, file.filename, options, (err, result) ->

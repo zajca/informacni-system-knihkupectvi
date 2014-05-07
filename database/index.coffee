@@ -12,12 +12,19 @@ module.exports =
       server:
         auto_reconnect: true
 
-    dbTimeout = setTimeout(errorConnecting, 1000 * 30)
+    dbTimeout = setTimeout(errorConnecting, 100)
 
     errorConnecting = ->
       console.error "Error connecting to mongodb"
       process.exit(1)
+
+    # console.log db
       
-    db.on "open", -> clearTimeout(dbTimeout)
+    db.on "open", (e)->
+      clearTimeout(dbTimeout)
+    db.on "error", (e)->
+      clearTimeout(dbTimeout)
+      errorConnecting
 
   user: require "./schema/user"
+  book: require "./schema/book"

@@ -41,7 +41,7 @@ html#ng-app(xmlns:ng='http://angularjs.org', lang='cs', dir='ltr', ng-controller
             .navbar-header
               a.navbar-brand(href='#') Knihkupectví
               ul.nav.navbar-nav
-                li(ng-repeat='m in menu' data-match-route='{{m.route}}')
+                li(ng-repeat='m in menu' data-match-route='{{m.route}}' ng-class="m.class")
                   a(ng-href="{{m.route}}" target="_self" ng-if="m.route") {{m.name|translate}}
                   a(ui-sref="{{m.state}}" ng-if="m.state") {{m.name|translate}}
                   a(href ng-if="m.special && !m.icon" title="{{m.name|translate}}" data-placement="bottom" data-template="/partials/{{m.template}}" data-animation="am-flip-x" bs-popover) {{m.name|translate}}
@@ -58,6 +58,7 @@ html#ng-app(xmlns:ng='http://angularjs.org', lang='cs', dir='ltr', ng-controller
         link(type='text/css' href='/css/main.css' rel='stylesheet')
         //script(type='text/javascript' src='/vendor/angular-loader/angular-loader.js')
         script(type='text/javascript' src='/vendor/scriptjs/dist/script.js')
+        //- script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js')
         script(type='text/javascript').
             $script([
                 '/js/store.js'

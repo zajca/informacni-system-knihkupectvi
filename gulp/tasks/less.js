@@ -30,7 +30,7 @@ gulp.task('LESS', ["SPRITES"], function() {
 
 gulp.task('LESS_DEV', ["SPRITES_DEV"], function() {
     return gulp.src("./src/less/main.less")
-        .pipe(debug({verbose: true}))
+        // .pipe(debug({verbose: true}))
         .pipe(plumber())
         .pipe(less())
         .pipe(autoprefixer(confAutoPrefix))

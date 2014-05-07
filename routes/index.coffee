@@ -15,4 +15,5 @@ module.exports =
   storage: (req, res)->
     res.render "storage"
 
-  user: require "./v1/user"
+  users: require "./v1/user"
+  books: require "./v1/book"

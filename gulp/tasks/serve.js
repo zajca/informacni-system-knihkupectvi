@@ -3,9 +3,9 @@ var config  = require('../config');
 var nodemon = require('gulp-nodemon');
 var notify = require("gulp-notify");
 var plumber      = require('gulp-plumber');
-// var coffeelint   = require('gulp-coffeelint')
+var coffeelint   = require('gulp-coffeelint')
 
-gulp.task("devServer", function() {
+gulp.task("devServer",["serverLint"], function() {
   return nodemon({
     script: "app.js",
     ext: "jade coffee",
@@ -22,17 +22,17 @@ gulp.task("devServer", function() {
   });
 });
 
-// gulp.task('serverLint', function() {
-//   return gulp.src(
-//     [
-//       "./config/**/*.coffee",
-//       "./database/**/*.coffee",
-//       "./middleware/**/*.coffee",
-//       "./routes/**/*.coffee",
-//       "./config.coffee",
-//       "./index.coffee"
-//     ])
-//   .pipe(plumber())
-//   .pipe(coffeelint())
-//   .pipe(coffeelint.reporter());
-// });
+gulp.task('serverLint', function() {
+  return gulp.src(
+    [
+      "./config/**/*.coffee",
+      "./database/**/*.coffee",
+      "./middleware/**/*.coffee",
+      "./routes/**/*.coffee",
+      "./config.coffee",
+      "./index.coffee"
+    ])
+  .pipe(plumber())
+  .pipe(coffeelint())
+  .pipe(coffeelint.reporter());
+});

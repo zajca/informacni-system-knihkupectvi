@@ -28,6 +28,7 @@
     "angular-xeditable": "~0.1.8",
     "angular-local-storage": "~0.0.3",
     "ngAnimate-animate.css": "~0.1.1",
-    "animate.css": "~3.1.1"
+    "animate.css": "~3.1.1",
+    "angular-resource": "~1.2.16"
   }
 }

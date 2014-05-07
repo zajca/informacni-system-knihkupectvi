@@ -40,12 +40,14 @@ m.controller "StoreCtrl", [
       name:"MENU_REGISTER"
       route: undefined
       special: "register"
+      class: "pull-right"
       template: "user/register.tpl.html"
     ,
       name:"MENU_LOGIN"
       route: undefined
       # special: "login"
       icon: "fa-sign-in"
+      class: "pull-right"
       template: "user/login.tpl.html"
     ]
 

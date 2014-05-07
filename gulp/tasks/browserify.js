@@ -13,7 +13,8 @@ gulp.task('browserify_dev', function(){
     console.log(element);
     return browserify({
         entries: ['./src/app/'+element+'.coffee'],
-        extensions: ['.coffee']
+        extensions: ['.coffee'],
+        transform: ["coffeeify","brfs","envify","browserify-shim"]
     })
 //        .require('backbone/node_modules/underscore', { expose: 'underscore' })
     .bundle({debug: true})

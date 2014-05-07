@@ -7,6 +7,7 @@ db=
 
 app=
   "port":3000
+  "socket":3001
 
 exports.db=db
 exports.app=app

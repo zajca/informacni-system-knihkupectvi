@@ -1,17 +1,13 @@
 mongoose = require 'mongoose'
 Schema = mongoose.Schema
 
-Promise = require('bluebird')
-uuid = require('node-uuid')
+# Promise = require('bluebird')
+# uuid = require('node-uuid')
 
 ###
 SCHEMA
 ###
 Book = new Schema
-  _id:
-    type: String,
-    default: ->
-      uuid.v4().replace(/-/g, '')
   name:
     type: String
     required: true
@@ -19,25 +15,68 @@ Book = new Schema
   author:
     type: String
     required: true
-    index: true
   owner:
-  buyers:
-  type:
-    type: String
-    required: true
-    index: true
+    type: Schema.Types.ObjectId
+    ref: "User"
+  buyers:[
+    type: Schema.Types.ObjectId
+    ref: "User"
+  ]
+  genres:[
+    {
+      type: String
+      index: true
+    }
+  ]
   keywords:
     type:String
     required:false
   number_of_sales:
     type:Number
     required:false
-  commets:
-  rating:
-  on_eshop:
+  commets:[
+    {
+      author:
+        type: String
+        require: true
+      coment:
+        type: String
+        require: true
+      user:
+        type: Schema.Types.ObjectId
+        ref: "User"
+    }
+  ]
+  rating:[
+    {
+      value:
+        type: Number
+        require: true
+      user:
+        type: Schema.Types.ObjectId
+        ref: "User"
+    }
+  ]
+  avaible:Boolean
+  delivery_days:String
   price:
-  price_hystory:
+    type:Number
+  released:Date
+  public_from:Date
+  buy_allowed_from:Date
+  description:String
+  price_hystory:[
+    {
+      date:
+        type:Date
+        default: Date.now
+      value:
+        type:Number
+    }
+  ]
   pages:
+    type: Number
+    required: true
   meta: [
       {
         key: String
@@ -51,12 +90,9 @@ Book = new Schema
     type:Date
     default: Date.now
 
-# PLUGINS
-Book.plugin(passportLocalMongoose)
+# Book.create = ->
 
-Book.create = ->
-
-Book.canDownloadBook = ->
+# Book.canDownloadBook = ->
 
 # EXPORT
 module.exports = mongoose.model 'Book', Book

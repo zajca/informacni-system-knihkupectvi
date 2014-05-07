@@ -4,9 +4,10 @@ Module dependencies.
 express = require("express")
 http = require("http")
 path = require("path")
-passport = require('passport')
+# passport = require('passport')
 LocalStrategy = require('passport-local').Strategy
 mongooseRestEndpoints = require('mongoose-rest-endpoints')
+restify = require('express-restify-mongoose')
 
 app = express()
 
@@ -20,10 +21,14 @@ require("./config").setUpExpress(app,config)
 db = require('./database')
 db.setUp config
 User = db.user
+Book = db.book
+
+#scokerio
+io = require('socket.io').listen(app.listen(config.app.socket))
 
 #setup passport
-passport.serializeUser User.serializeUser()
-passport.deserializeUser User.deserializeUser()
+# passport.serializeUser User.serializeUser()
+# passport.deserializeUser User.deserializeUser()
 
 ###
 REQUIRE ROUTES
@@ -44,8 +49,20 @@ app.get "/create", router.create
 app.get "/storage", router.storage
 
 #API ROUTES
-# app.get "/users", router.user.list
-new mongooseRestEndpoints.endpoint('/api/v1/users', 'User').register(app);
+apiPrefix="/api/v1"
+app.get "#{apiPrefix}/books", router.books.list
+app.get "#{apiPrefix}/books/type/:type", router.books.listType
+app.get "#{apiPrefix}/books/find", router.books.find
+app.get "#{apiPrefix}/books/:id", router.books.show
+app.put "#{apiPrefix}/books/:id", router.books.update
+app.post "#{apiPrefix}/books", router.books.create
+
+# new mongooseRestEndpoints.endpoint('/api/v1/user', 'User').register(app);
+# new mongooseRestEndpoints.endpoint('/api/v1/book', 'Book').register(app);
+# restify.serve app, User
+# restify.serve app, Book
+
+console.log app.routes
 
 http.createServer(app).listen app.get("port"), ->
   console.log "Express server listening on port " + app.get("port")
