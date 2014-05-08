@@ -21,13 +21,13 @@ module.exports =
     res.send "respond with a resource"
 
   create:(req, res) ->
+
     console.log("POST: ")
     console.log(req.body)
+
     book=new Book(req.body)
     p = book.save (err)->
       if !err
         res.send(book)
       else
         console.log "FAIL"+out
-      
-        

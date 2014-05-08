@@ -12,30 +12,26 @@ m.factory "AuthenticationService", [
   "$state",
   "CONF"
   ($http, $sanitize, SessionService, FlashService, $log, $rootScope,$state,conf) ->
-
+    
     cacheSession = (response)->
       SessionService.set "authenticated", true
+      SessionService.set "authToken", response.authToken
       SessionService.set "role", response.group
       SessionService.set "id", response.id
+      $http.defaults.headers.common['X-Authorization'] = response.authToken
 
     uncacheSession = ->
       SessionService.set "authenticated", false
+      SessionService.unset "authToken"
       SessionService.unset  "role"
       SessionService.unset  "id"
+      delete $http.defaults.headers.common.Authorization
 
     loginError = (response) ->
       if response.data.flash is undefined
         return
       else
         FlashService.show(response.data.flash, "error")
-
-    getLoginInfo = ->
-      http = $http.get("#{CONF.apiUrl}/auth/info")
-      http.then (res)->
-        cacheSession(data)
-      ,(res)->
-        uncacheSession()
-      http
 
     sanitizeCredentials = (credentials) ->
       email: $sanitize(credentials.email)

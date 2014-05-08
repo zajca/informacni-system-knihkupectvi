@@ -1,6 +1,5 @@
 mongoose = require 'mongoose'
 Schema = mongoose.Schema
-
 # Promise = require('bluebird')
 # uuid = require('node-uuid')
 

@@ -4,7 +4,7 @@ require "angular-ui-router"
 require "./../../vendor/angular-animate/angular-animate"
 require "./../../vendor/angular-touch/angular-touch"
 require "./../../vendor/angular-translate/angular-translate"
-require "./../../libs/cs_cz"
+require "./../../lib/cs_cz"
 #COMMON
 require "./../common/device"
 require "./../common/flashService"

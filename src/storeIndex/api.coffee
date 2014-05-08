@@ -5,9 +5,9 @@ module.exports = [
     fetch:(type)->  
       n = FlashService.show($translate("FLASH_REQUEST_FOR_BOOKS"))
 
-      http = $http.get("#{CONF.apiUrl}book")
+      http = $http.get("#{CONF.apiUrl}books")
       if type?
-        http = $http.get("#{CONF.apiUrl}book/type/#{type}")
+        http = $http.get("#{CONF.apiUrl}books/type/#{type}")
 
       http.then (res)->
         $log.debug res
@@ -22,7 +22,7 @@ module.exports = [
       n = FlashService.show($translate("FLASH_REQUEST_FOR_BOOKS"))
 
       params = params||{}
-      http = $http.get("#{CONF.apiUrl}book",params)
+      http = $http.get("#{CONF.apiUrl}books",params)
       http.then (res)->
         $log.debug res
         FlashService.done(n)
