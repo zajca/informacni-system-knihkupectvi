@@ -15,7 +15,8 @@ User = new Schema
     unique: true
     index: true
   img:
-    type: Schema.Types.Mixed
+    data: Buffer
+    contentType: String
   locale:
     type: String
   name:

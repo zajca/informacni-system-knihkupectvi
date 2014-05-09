@@ -7,6 +7,7 @@ path = require("path")
 # passport = require('passport')
 LocalStrategy = require('passport-local').Strategy
 mongooseRestEndpoints = require('mongoose-rest-endpoints')
+mongooseRestEndpoints.log.verbose(true)
 restify = require('express-restify-mongoose')
 access = require('./lib/auth/middleware/access')
 

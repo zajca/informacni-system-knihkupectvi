@@ -1,5 +1,6 @@
 mongoose = require 'mongoose'
 Schema = mongoose.Schema
+url = require(process.cwd() + '/lib/filters/url')
 # Promise = require('bluebird')
 # uuid = require('node-uuid')
 
@@ -14,6 +15,8 @@ Book = new Schema
   author:
     type: String
     required: true
+  url:
+    type: String
   owner:
     type: Schema.Types.ObjectId
     ref: "User"
@@ -21,6 +24,13 @@ Book = new Schema
     type: Schema.Types.ObjectId
     ref: "User"
   ]
+  img:
+    small:
+      data: Buffer
+      contentType: String
+    big:
+      data: Buffer
+      contentType: String
   genres:[
     {
       type: String
@@ -57,7 +67,7 @@ Book = new Schema
     }
   ]
   avaible:Boolean
-  delivery_days:String
+  delivery_msg:String
   price:
     type:Number
   released:Date
@@ -89,6 +99,18 @@ Book = new Schema
     type:Date
     default: Date.now
 
+#GENEROVANI URL
+addUrl = (book)->
+  if (typeof book.url == 'undefined')
+    book.url = url(book.name)
+#KONTROLA URL
+Book.pre 'validate', (next)->
+  addUrl this
+  next()
+#HLEDANI PODLE URL
+Book.statics.findOneByUrl = (url, cb)->
+  this.findOne({url: url}, cb)
+    
 # Book.create = ->
 
 # Book.canDownloadBook = ->
