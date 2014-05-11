@@ -8,7 +8,7 @@ path = require("path")
 LocalStrategy = require('passport-local').Strategy
 mongooseRestEndpoints = require('mongoose-rest-endpoints')
 mongooseRestEndpoints.log.verbose(true)
-restify = require('express-restify-mongoose')
+# restify = require('express-restify-mongoose')
 access = require('./lib/auth/middleware/access')
 
 app = express()
@@ -23,6 +23,9 @@ db = require('./database')
 db.setUp config
 User = db.user
 Book = db.book
+
+acl = db.acl()
+console.log acl
 
 #socket.io
 io = require('socket.io').listen(app.listen(config.app.socket))
